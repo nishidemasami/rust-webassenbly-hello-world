@@ -6,10 +6,12 @@
 	<title>Hello, WebAssembly!</title>
 	<meta name="description" content="WebAssemblyでHello, WebAssembly!" />
 	<script type="module">
-		import init, { greet } from "./hello_wasm.js";
+		import init, { greet, fizzbuzz } from "./hello_wasm.js";
 		init()
 			.then(() => {
+				console.log(greet("WebAssembly"));
 				document.getElementById("root").textContent = greet("WebAssembly");
+				console.log(fizzbuzz("18446744073709551630"));
 			});
 	</script>
 </head>

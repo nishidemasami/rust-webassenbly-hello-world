@@ -5,12 +5,18 @@
 * @returns {string}
 */
 export function greet(name: string): string;
+/**
+* @param {string} number
+* @returns {string}
+*/
+export function fizzbuzz(number: string): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly greet: (a: number, b: number, c: number) => void;
+  readonly fizzbuzz: (a: number, b: number, c: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
