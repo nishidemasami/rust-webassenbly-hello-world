@@ -1,19 +1,40 @@
 use num::Zero;
-use std::cmp::PartialEq;
 use std::ops::Rem;
 
-pub fn fizz_buzz_calc<T: Clone + Rem<Output = T> + From<u8> + PartialEq + Zero + ToString>(
+pub fn fizz_buzz_calc<T: Clone + Rem<Output = T> + From<u8> + Zero + ToString>(
     number: &T,
 ) -> String {
     match (
-        number.clone() % T::from(3) == T::zero(),
-        number.clone() % T::from(5) == T::zero(),
+        (number.clone() % T::from(3)).is_zero(),
+        (number.clone() % T::from(5)).is_zero(),
     ) {
         (true, true) => "FizzBuzz".to_string(),
         (true, _) => "Fizz".to_string(),
         (_, true) => "Buzz".to_string(),
         _ => number.to_string(),
     }
+}
+
+pub fn fizz_buzz_calc_int<T: Copy + Rem<Output = T> + From<u8> + Zero + ToString>(
+    number: T,
+) -> String {
+    match (
+        (number % T::from(3)).is_zero(),
+        (number % T::from(5)).is_zero(),
+    ) {
+        (true, true) => "FizzBuzz".to_string(),
+        (true, _) => "Fizz".to_string(),
+        (_, true) => "Buzz".to_string(),
+        _ => number.to_string(),
+    }
+}
+
+#[test]
+fn fizz_buzz_calc_int_test() {
+    assert_eq!(fizz_buzz_calc_int(1), "1");
+    assert_eq!(fizz_buzz_calc_int(3), "Fizz");
+    assert_eq!(fizz_buzz_calc_int(5), "Buzz");
+    assert_eq!(fizz_buzz_calc_int(15), "FizzBuzz");
 }
 
 #[test]

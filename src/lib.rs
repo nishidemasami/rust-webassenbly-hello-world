@@ -1,6 +1,6 @@
 mod fizzbuzz;
 
-use fizzbuzz::fizzbuzz::fizz_buzz_calc;
+use fizzbuzz::fizzbuzz::{fizz_buzz_calc, fizz_buzz_calc_int};
 use num::{BigInt, Num};
 use wasm_bindgen::prelude::wasm_bindgen;
 
@@ -16,8 +16,13 @@ pub fn fizzbuzz(number: &str) -> String {
 }
 
 #[wasm_bindgen]
-pub fn fizzbuzz_int(number: i32) -> String {
-    fizz_buzz_calc(&number)
+pub fn fizzbuzz_int(number: u32) -> String {
+    fizz_buzz_calc_int(number)
+}
+
+#[wasm_bindgen]
+pub fn fizzbuzz_bigint(number: u64) -> String {
+    fizz_buzz_calc_int(number)
 }
 
 #[test]
@@ -52,10 +57,6 @@ fn fizz_buzz_calc_test() {
 
 #[test]
 fn fizzbuzz_int_test() {
-    assert_eq!(fizzbuzz_int(-1), "-1");
-    assert_eq!(fizzbuzz_int(-3), "Fizz");
-    assert_eq!(fizzbuzz_int(-5), "Buzz");
-    assert_eq!(fizzbuzz_int(-15), "FizzBuzz");
     assert_eq!(fizzbuzz_int(1), "1");
     assert_eq!(fizzbuzz_int(3), "Fizz");
     assert_eq!(fizzbuzz_int(5), "Buzz");

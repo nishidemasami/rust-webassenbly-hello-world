@@ -15,6 +15,11 @@ export function fizzbuzz(number: string): string;
 * @returns {string}
 */
 export function fizzbuzz_int(number: number): string;
+/**
+* @param {bigint} number
+* @returns {string}
+*/
+export function fizzbuzz_bigint(number: bigint): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -23,6 +28,7 @@ export interface InitOutput {
   readonly greet: (a: number, b: number, c: number) => void;
   readonly fizzbuzz: (a: number, b: number, c: number) => void;
   readonly fizzbuzz_int: (a: number, b: number) => void;
+  readonly fizzbuzz_bigint: (a: number, b: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
