@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8" />
+		<title>WebAssemblyでHello, WebAssembly!</title>
+		<meta name="description" content="WebAssemblyでHello, WebAssembly!" />
+    <script type="module">
+        import init, {greet} from "./hello_wasm.js";
+        init()
+            .then(() => {
+				document.getElementById("root").textContent = greet("WebAssembly");
+            });
+    </script>
+	</head>
+	<body>
+		It's a WebAssembly demo page.
+		<div id="root"></div>
+	</body>
+</html>
