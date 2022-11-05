@@ -1,12 +1,13 @@
 use num::Zero;
+use std::cmp::PartialEq;
 use std::ops::Rem;
 
-pub fn fizz_buzz_calc<T: Zero + From<u8> + Clone + Rem<Output = T> + ToString>(
+pub fn fizz_buzz_calc<T: Clone + Rem<Output = T> + From<u8> + PartialEq + Zero + ToString>(
     number: &T,
 ) -> String {
     match (
-        (number.clone() % T::from(3)).is_zero(),
-        (number.clone() % T::from(5)).is_zero(),
+        number.clone() % T::from(3) == T::zero(),
+        number.clone() % T::from(5) == T::zero(),
     ) {
         (true, true) => "FizzBuzz".to_string(),
         (true, _) => "Fizz".to_string(),
