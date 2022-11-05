@@ -6,7 +6,7 @@
 	<title>Hello, WebAssembly!</title>
 	<meta name="description" content="Hello, WebAssembly!" />
 	<script type="module">
-		import init, { greet, fizzbuzz, fizzbuzz_int, fizzbuzz_bigint } from "./rust_webassenbly_hello_world.js";
+		import init, { greet, fizzbuzz, fizzbuzz_int, fizzbuzz_bigint, gcd } from "./rust_webassenbly_hello_world.js";
 		init()
 			.then(() => {
 				console.log(greet("WebAssembly")); // Hello, WebAssembly!
@@ -25,6 +25,9 @@
 				console.log(fizzbuzz_bigint(8446744073709551643n)); // Fizz
 				console.log(fizzbuzz_bigint(18446744073709551617n)); // 1
 				console.log(fizzbuzz_bigint(844674407370754893029551640n)); // 6930698558874037784
+				console.log(gcd("10", "30")); // 10
+				console.log(gcd("1763", "1927")); // 41
+				console.log(gcd("6171373", "1513733")); // 116441
 			});
 	</script>
 </head>

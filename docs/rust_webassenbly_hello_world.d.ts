@@ -6,6 +6,12 @@
 */
 export function greet(name: string): string;
 /**
+* @param {string} x
+* @param {string} y
+* @returns {string}
+*/
+export function gcd(x: string, y: string): string;
+/**
 * @param {string} number
 * @returns {string}
 */
@@ -26,6 +32,7 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly greet: (a: number, b: number, c: number) => void;
+  readonly gcd: (a: number, b: number, c: number, d: number, e: number) => void;
   readonly fizzbuzz: (a: number, b: number, c: number) => void;
   readonly fizzbuzz_int: (a: number, b: number) => void;
   readonly fizzbuzz_bigint: (a: number, b: number) => void;

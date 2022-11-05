@@ -1,12 +1,23 @@
 mod fizzbuzz;
+mod gcd;
 
 use fizzbuzz::fizzbuzz::{fizz_buzz_calc, fizz_buzz_calc_int};
+use gcd::gcd::gcd_calc;
 use num::{BigInt, Num};
 use wasm_bindgen::prelude::wasm_bindgen;
 
 #[wasm_bindgen]
 pub fn greet(name: &str) -> String {
     format!("Hello, {}!", name)
+}
+
+#[wasm_bindgen]
+pub fn gcd(x: &str, y: &str) -> String {
+    gcd_calc(
+        BigInt::from_str_radix(&x, 10).expect("error parsing argument"),
+        BigInt::from_str_radix(&y, 10).expect("error parsing argument"),
+    )
+    .to_string()
 }
 
 #[wasm_bindgen]
@@ -29,6 +40,23 @@ pub fn fizzbuzz_bigint(number: u64) -> String {
 fn it_works() {
     let result = greet("World");
     assert_eq!(result, "Hello, World!");
+}
+
+#[test]
+fn gcd_test() {
+    assert_eq!(
+        gcd_calc(BigInt::from(10), BigInt::from(30)),
+        BigInt::from(10)
+    );
+    assert_eq!(
+        gcd_calc(BigInt::from(6171373), BigInt::from(1513733)),
+        BigInt::from(116441)
+    );
+    assert_eq!(gcd("1763", "1927"), "41");
+    assert_eq!(gcd("6171373", "1513733"), "116441");
+    assert_eq!(gcd("10", "30"), "10");
+    assert_eq!(gcd("1763", "1927"), "41");
+    assert_eq!(gcd("6171373", "1513733"), "116441");
 }
 
 #[test]

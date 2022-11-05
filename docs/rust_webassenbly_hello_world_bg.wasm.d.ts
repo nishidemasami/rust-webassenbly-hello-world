@@ -2,6 +2,7 @@
 /* eslint-disable */
 export const memory: WebAssembly.Memory;
 export function greet(a: number, b: number, c: number): void;
+export function gcd(a: number, b: number, c: number, d: number, e: number): void;
 export function fizzbuzz(a: number, b: number, c: number): void;
 export function fizzbuzz_int(a: number, b: number): void;
 export function fizzbuzz_bigint(a: number, b: number): void;
