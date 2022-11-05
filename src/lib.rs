@@ -15,6 +15,11 @@ pub fn fizzbuzz(number: &str) -> String {
     fizz_buzz_calc(&number)
 }
 
+#[wasm_bindgen]
+pub fn fizzbuzz_int(number: i32) -> String {
+    fizz_buzz_calc(&number)
+}
+
 #[test]
 fn it_works() {
     let result = greet("World");
@@ -27,6 +32,34 @@ fn fizz_buzz_calc_test() {
     assert_eq!(fizz_buzz_calc(&3), "Fizz");
     assert_eq!(fizz_buzz_calc(&5), "Buzz");
     assert_eq!(fizz_buzz_calc(&15), "FizzBuzz");
+    assert_eq!(
+        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551616", 10).unwrap()),
+        "18446744073709551616"
+    );
+    assert_eq!(
+        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551618", 10).unwrap()),
+        "Fizz"
+    );
+    assert_eq!(
+        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551620", 10).unwrap()),
+        "Buzz"
+    );
+    assert_eq!(
+        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551630", 10).unwrap()),
+        "FizzBuzz"
+    );
+}
+
+#[test]
+fn fizzbuzz_int_test() {
+    assert_eq!(fizzbuzz_int(-1), "-1");
+    assert_eq!(fizzbuzz_int(-3), "Fizz");
+    assert_eq!(fizzbuzz_int(-5), "Buzz");
+    assert_eq!(fizzbuzz_int(-15), "FizzBuzz");
+    assert_eq!(fizzbuzz_int(1), "1");
+    assert_eq!(fizzbuzz_int(3), "Fizz");
+    assert_eq!(fizzbuzz_int(5), "Buzz");
+    assert_eq!(fizzbuzz_int(15), "FizzBuzz");
 }
 
 #[test]

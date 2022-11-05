@@ -119,6 +119,23 @@ export function fizzbuzz(number) {
     }
 }
 
+/**
+* @param {number} number
+* @returns {string}
+*/
+export function fizzbuzz_int(number) {
+    try {
+        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+        wasm.fizzbuzz_int(retptr, number);
+        var r0 = getInt32Memory0()[retptr / 4 + 0];
+        var r1 = getInt32Memory0()[retptr / 4 + 1];
+        return getStringFromWasm0(r0, r1);
+    } finally {
+        wasm.__wbindgen_add_to_stack_pointer(16);
+        wasm.__wbindgen_free(r0, r1);
+    }
+}
+
 async function load(module, imports) {
     if (typeof Response === 'function' && module instanceof Response) {
         if (typeof WebAssembly.instantiateStreaming === 'function') {
@@ -187,7 +204,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('hello_wasm_bg.wasm', import.meta.url);
+        input = new URL('rust_webassenbly_hello_world_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
