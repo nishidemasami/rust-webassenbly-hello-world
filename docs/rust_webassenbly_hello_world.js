@@ -123,6 +123,16 @@ export function gcd(x, y) {
 }
 
 /**
+* @param {number} x
+* @param {number} y
+* @returns {number}
+*/
+export function gcd_int(x, y) {
+    const ret = wasm.gcd_int(x, y);
+    return ret >>> 0;
+}
+
+/**
 * @param {string} number
 * @returns {string}
 */

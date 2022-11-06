@@ -12,6 +12,12 @@ export function greet(name: string): string;
 */
 export function gcd(x: string, y: string): string;
 /**
+* @param {number} x
+* @param {number} y
+* @returns {number}
+*/
+export function gcd_int(x: number, y: number): number;
+/**
 * @param {string} number
 * @returns {string}
 */
@@ -33,6 +39,7 @@ export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly greet: (a: number, b: number, c: number) => void;
   readonly gcd: (a: number, b: number, c: number, d: number, e: number) => void;
+  readonly gcd_int: (a: number, b: number) => number;
   readonly fizzbuzz: (a: number, b: number, c: number) => void;
   readonly fizzbuzz_int: (a: number, b: number) => void;
   readonly fizzbuzz_bigint: (a: number, b: number) => void;

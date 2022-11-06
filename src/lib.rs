@@ -21,6 +21,11 @@ pub fn gcd(x: &str, y: &str) -> String {
 }
 
 #[wasm_bindgen]
+pub fn gcd_int(x: u32, y: u32) -> u32 {
+    gcd_calc(x, y)
+}
+
+#[wasm_bindgen]
 pub fn fizzbuzz(number: &str) -> String {
     let number = BigInt::from_str_radix(number, 10).expect("error parsing argument");
     fizz_buzz_calc(number)
@@ -56,7 +61,24 @@ fn gcd_test() {
     assert_eq!(gcd("6171373", "1513733"), "116441");
     assert_eq!(gcd("10", "30"), "10");
     assert_eq!(gcd("1763", "1927"), "41");
-    assert_eq!(gcd("6171373", "1513733"), "116441");
+    assert_eq!(
+        gcd(
+            "20689856962082115885041972726487268355243056299479",
+            "4014476939333036189094441199026045136645885247730"
+        ),
+        "127"
+    );
+}
+
+#[test]
+fn gcd_int_test() {
+    assert_eq!(gcd_int(10, 30), 10);
+    assert_eq!(gcd_int(6171373, 1513733), 116441);
+    assert_eq!(gcd_int(1763, 1927), 41);
+    assert_eq!(gcd_int(6171373, 1513733), 116441);
+    assert_eq!(gcd_int(10, 30), 10);
+    assert_eq!(gcd_int(1763, 1927), 41);
+    assert_eq!(gcd_int(6171373, 1513733), 116441);
 }
 
 #[test]

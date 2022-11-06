@@ -6,14 +6,14 @@
 	<title>Hello, WebAssembly!</title>
 	<meta name="description" content="Hello, WebAssembly!" />
 	<script type="module">
-		import init, { greet, fizzbuzz, fizzbuzz_int, fizzbuzz_bigint, gcd } from "./rust_webassenbly_hello_world.js";
+		import init, { greet, fizzbuzz, fizzbuzz_int, fizzbuzz_bigint, gcd, gcd_int } from "./rust_webassenbly_hello_world.js";
 		init()
 			.then(() => {
 				console.log(greet("WebAssembly")); // Hello, WebAssembly!
 				document.getElementById("root").textContent = greet("WebAssembly");
-				console.log(fizzbuzz("18446744073709551616")); // FizzBuzz
-				console.log(fizzbuzz("18446744073709551618")); // FizzBuzz
-				console.log(fizzbuzz("18446744073709551620")); // FizzBuzz
+				console.log(fizzbuzz("18446744073709551616")); // 18446744073709551616
+				console.log(fizzbuzz("18446744073709551618")); // Fizz
+				console.log(fizzbuzz("18446744073709551620")); // Buzz
 				console.log(fizzbuzz("18446744073709551630")); // FizzBuzz
 				console.log(fizzbuzz_int(15)); // FizzBuzz
 				console.log(fizzbuzz_int(9007199254740990)); // 4294967294
@@ -28,12 +28,16 @@
 				console.log(gcd("10", "30")); // 10
 				console.log(gcd("1763", "1927")); // 41
 				console.log(gcd("6171373", "1513733")); // 116441
+				console.log(gcd_int(10, 30)); // 10
+				console.log(gcd_int(1763, 1927)); // 41
+				console.log(gcd_int(6171373, 1513733)); // 116441
 			});
 	</script>
 </head>
 
 <body>
-	It's a WebAssembly demo page.
+	<p>https://github.com/nishidemasami/rust-webassenbly-hello-world</p>
+	<p>It's a WebAssembly demo page.</p>
 	<div id="root"></div>
 </body>
 
