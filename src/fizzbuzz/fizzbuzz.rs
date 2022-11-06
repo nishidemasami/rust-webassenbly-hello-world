@@ -1,12 +1,16 @@
 use num::Zero;
 use std::ops::Rem;
 
-pub fn fizz_buzz_calc<T: Clone + Rem<Output = T> + From<u8> + Zero + ToString>(
-    number: &T,
-) -> String {
+pub fn fizz_buzz_calc<T>(number: T) -> String
+where
+    T: From<u8>,
+    T: Zero,
+    T: ToString,
+    for<'a> &'a T: Rem<Output = T>,
+{
     match (
-        (number.clone() % T::from(3)).is_zero(),
-        (number.clone() % T::from(5)).is_zero(),
+        (&number % &T::from(3)).is_zero(),
+        (&number % &T::from(5)).is_zero(),
     ) {
         (true, true) => "FizzBuzz".to_string(),
         (true, _) => "Fizz".to_string(),
@@ -41,40 +45,47 @@ fn fizz_buzz_calc_int_test() {
 fn fizz_buzz_calc_test() {
     use num::{BigInt, Num};
 
-    assert_eq!(fizz_buzz_calc(&1), "1");
-    assert_eq!(fizz_buzz_calc(&3), "Fizz");
-    assert_eq!(fizz_buzz_calc(&5), "Buzz");
-    assert_eq!(fizz_buzz_calc(&15), "FizzBuzz");
+    assert_eq!(fizz_buzz_calc(1), "1");
+    assert_eq!(fizz_buzz_calc(3), "Fizz");
+    assert_eq!(fizz_buzz_calc(5), "Buzz");
+    assert_eq!(fizz_buzz_calc(15), "FizzBuzz");
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("1", 10).unwrap()),
+        fizz_buzz_calc(18446744073709551601u64),
+        "18446744073709551601"
+    );
+    assert_eq!(fizz_buzz_calc(18446744073709551603u64), "Fizz");
+    assert_eq!(fizz_buzz_calc(18446744073709551605u64), "Buzz");
+    assert_eq!(fizz_buzz_calc(18446744073709551615u64), "FizzBuzz");
+    assert_eq!(
+        fizz_buzz_calc(BigInt::from_str_radix("1", 10).unwrap()),
         "1"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("3", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("3", 10).unwrap()),
         "Fizz"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("5", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("5", 10).unwrap()),
         "Buzz"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("15", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("15", 10).unwrap()),
         "FizzBuzz"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551616", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551616", 10).unwrap()),
         "18446744073709551616"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551618", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551618", 10).unwrap()),
         "Fizz"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551620", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551620", 10).unwrap()),
         "Buzz"
     );
     assert_eq!(
-        fizz_buzz_calc(&BigInt::from_str_radix("18446744073709551630", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551630", 10).unwrap()),
         "FizzBuzz"
     );
 }
