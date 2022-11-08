@@ -28,17 +28,17 @@ pub fn gcd_int(x: u32, y: u32) -> u32 {
 #[wasm_bindgen]
 pub fn fizzbuzz(number: &str) -> String {
     let number = BigInt::from_str_radix(number, 10).expect("error parsing argument");
-    fizz_buzz_calc(number)
+    fizz_buzz_calc(number).to_string()
 }
 
 #[wasm_bindgen]
 pub fn fizzbuzz_int(number: u32) -> String {
-    fizz_buzz_calc_int(number)
+    fizz_buzz_calc_int(number).to_string()
 }
 
 #[wasm_bindgen]
 pub fn fizzbuzz_bigint(number: u64) -> String {
-    fizz_buzz_calc_int(number)
+    fizz_buzz_calc_int(number).to_string()
 }
 
 #[test]
@@ -83,24 +83,24 @@ fn gcd_int_test() {
 
 #[test]
 fn fizz_buzz_calc_test() {
-    assert_eq!(fizz_buzz_calc(1), "1");
-    assert_eq!(fizz_buzz_calc(3), "Fizz");
-    assert_eq!(fizz_buzz_calc(5), "Buzz");
-    assert_eq!(fizz_buzz_calc(15), "FizzBuzz");
+    assert_eq!(fizz_buzz_calc(1).to_string(), "1");
+    assert_eq!(fizz_buzz_calc(3).to_string(), "Fizz");
+    assert_eq!(fizz_buzz_calc(5).to_string(), "Buzz");
+    assert_eq!(fizz_buzz_calc(15).to_string(), "FizzBuzz");
     assert_eq!(
-        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551616", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551616", 10).unwrap()).to_string(),
         "18446744073709551616"
     );
     assert_eq!(
-        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551618", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551618", 10).unwrap()).to_string(),
         "Fizz"
     );
     assert_eq!(
-        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551620", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551620", 10).unwrap()).to_string(),
         "Buzz"
     );
     assert_eq!(
-        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551630", 10).unwrap()),
+        fizz_buzz_calc(BigInt::from_str_radix("18446744073709551630", 10).unwrap()).to_string(),
         "FizzBuzz"
     );
 }
