@@ -92,4 +92,32 @@ fn fizz_buzz_calc_test() {
         fizz_buzz_calc(BigInt::from_str_radix("18446744073709551630", 10).unwrap()).to_string(),
         "FizzBuzz"
     );
+    assert_eq!(
+        fizz_buzz_calc(
+            BigInt::from_str_radix("340282366920938463463374607431768211456", 10).unwrap()
+        )
+        .to_string(),
+        "340282366920938463463374607431768211456"
+    );
+    assert_eq!(
+        fizz_buzz_calc(
+            BigInt::from_str_radix("340282366920938463463374607431768211458", 10).unwrap()
+        )
+        .to_string(),
+        "Fizz"
+    );
+    assert_eq!(
+        fizz_buzz_calc(
+            BigInt::from_str_radix("340282366920938463463374607431768211460", 10).unwrap()
+        )
+        .to_string(),
+        "Buzz"
+    );
+    assert_eq!(
+        fizz_buzz_calc(
+            BigInt::from_str_radix("340282366920938463463374607431768211470", 10).unwrap()
+        )
+        .to_string(),
+        "FizzBuzz"
+    );
 }

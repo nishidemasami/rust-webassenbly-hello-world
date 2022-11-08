@@ -1,0 +1,12 @@
+{
+  "name": "rust-webassenbly-hello-world",
+  "version": "0.1.0",
+  "files": [
+    "rust_webassenbly_hello_world_bg.wasm",
+    "rust_webassenbly_hello_world.js",
+    "rust_webassenbly_hello_world.d.ts"
+  ],
+  "module": "rust_webassenbly_hello_world.js",
+  "types": "rust_webassenbly_hello_world.d.ts",
+  "sideEffects": false
+}

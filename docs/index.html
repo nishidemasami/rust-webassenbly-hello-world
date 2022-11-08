@@ -15,6 +15,10 @@
 				console.log(fizzbuzz("18446744073709551618")); // Fizz
 				console.log(fizzbuzz("18446744073709551620")); // Buzz
 				console.log(fizzbuzz("18446744073709551630")); // FizzBuzz
+				console.log(fizzbuzz("340282366920938463463374607431768211456")); // 340282366920938463463374607431768211456
+				console.log(fizzbuzz("340282366920938463463374607431768211458")); // Fizz
+				console.log(fizzbuzz("340282366920938463463374607431768211460")); // Buzz
+				console.log(fizzbuzz("340282366920938463463374607431768211470")); // FizzBuzz
 				console.log(fizzbuzz_int(15)); // FizzBuzz
 				console.log(fizzbuzz_int(9007199254740990)); // 4294967294
 				console.log(fizzbuzz_bigint("9007199254741005")); // FizzBuzz
@@ -23,20 +27,23 @@
 				console.log(fizzbuzz_bigint(8446744073709551641n)); // 8446744073709551641
 				console.log(fizzbuzz_bigint(8446744073709551642n)); // 8446744073709551642
 				console.log(fizzbuzz_bigint(8446744073709551643n)); // Fizz
-				console.log(fizzbuzz_bigint(18446744073709551617n)); // 1
+				console.log(fizzbuzz_bigint(18446744073709551616n)); // FizzBuzz
+				console.log(fizzbuzz_bigint(18446744073709551617n)); // 1 (Because of 64bit unsigned integer cast)
 				console.log(fizzbuzz_bigint(844674407370754893029551640n)); // 6930698558874037784
-				console.log(gcd("10", "30")); // 10
-				console.log(gcd("1763", "1927")); // 41
-				console.log(gcd("6171373", "1513733")); // 116441
 				console.log(gcd_int(10, 30)); // 10
 				console.log(gcd_int(1763, 1927)); // 41
 				console.log(gcd_int(6171373, 1513733)); // 116441
+				console.log(gcd("10", "30")); // 10
+				console.log(gcd("1763", "1927")); // 41
+				console.log(gcd("6171373", "1513733")); // 116441
+				console.log(gcd("20689856962082115885041972726487268355243056299479", "4014476939333036189094441199026045136645885247730")); // 127
 			});
 	</script>
 </head>
 
 <body>
-	<p>https://github.com/nishidemasami/rust-webassenbly-hello-world</p>
+	<a
+		href="https://github.com/nishidemasami/rust-webassenbly-hello-world">https://github.com/nishidemasami/rust-webassenbly-hello-world</a>
 	<p>It's a WebAssembly demo page.</p>
 	<div id="root"></div>
 </body>
