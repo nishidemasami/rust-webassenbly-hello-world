@@ -19,7 +19,7 @@ RUN apt-get install -y \
 
 ## Install rustup and common components
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-RUN source "$HOME/.cargo/env"
+ENV PATH="$HOME/.cargo/env:$PATH"
 RUN rustup install nightly
 RUN rustup component add rustfmt
 RUN rustup component add rustfmt --toolchain nightly
